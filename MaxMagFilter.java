@@ -6,11 +6,11 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class MinMagFilter implements Filter {
+public class MaxMagFilter implements Filter {
     
     private double magMin;
     
-    public MinMagFilter(double min){
+    public MaxMagFilter(double min){
         this.magMin = min;
     }
     
