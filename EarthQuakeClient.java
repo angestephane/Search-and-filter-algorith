@@ -4,11 +4,11 @@ import edu.duke.*;
 
 public class EarthQuakeClient {
     
-    public ArrayList<QuakeEntry> filterByMagnitude(ArrayList<QuakeEntry> quakeData, double magMin) {
+    public ArrayList<QuakeEntry> filter(ArrayList<QuakeEntry> quakeData, Filter f) {
         ArrayList<QuakeEntry> answer = new ArrayList<QuakeEntry>();
         //TODO
         for (QuakeEntry qe : quakeData) {
-            if (qe.getMagnitude() > magMin) {
+            if (f.satisfie(qe)) {
                 answer.add(qe);
             }
         }
@@ -75,15 +75,17 @@ public class EarthQuakeClient {
         
     }
     
-    public void bigQuakes() {
+    public void quakeWithFilter() {
         EarthQuakeParser parser = new EarthQuakeParser();
         //String source = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         //String source = "../../data/nov20quakedata.atom";
-        String sourceSmallData = "../../data/nov20quakedatasmall.atom";
+        String sourceSmallData = "../data/nov20quakedatasmall.atom";
         ArrayList<QuakeEntry> list = parser.read(sourceSmallData);
         System.out.println("read data for " + list.size() + " quakes");
+        
+        Filter f = new MinMagFilter(4.0);
        
-        ArrayList<QuakeEntry> listBig = filterByMagnitude(list, 5.0);
+        ArrayList<QuakeEntry> listBig = filter(list, f);
         for (QuakeEntry qe : listBig) {
            System.out.println(qe); 
         }
