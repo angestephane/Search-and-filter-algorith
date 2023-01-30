@@ -26,6 +26,38 @@ public class EarthQuakeClient2 {
         return result;
     }
     
+    public void testMatchAllFilter(){
+        EarthQuakeParser parser = new EarthQuakeParser();
+        
+        String dataSource = "../data/nov20quakedatasmall.atom";
+        
+        ArrayList<QuakeEntry> list = parser.read(dataSource);
+        
+        System.out.println(list.size() + " taille des données");
+        
+        MatchAllFilter maf = new MatchAllFilter();
+        
+        //Filtres
+        Filter filtre1 = new MagnitudeFilter(0.0, 2.0); // Filtre selon la magnitude du séisme
+        //Ajout du filtre au tableau de filtre
+        maf.addFilter(filtre1);
+        
+        Filter filtre2 = new DepthFilter(-100000.0, -10000.0); // Filtre selon la profondeur du séisme
+        //Ajout du filtre au tableau de filtre
+        maf.addFilter(filtre2);
+        
+        Filter filtre4 = new PhraseFilter("any", "a"); //Filtre en prenant en compte le mot clé a
+        //Ajout du filtre au tableau de filtre
+        maf.addFilter(filtre4);
+        
+        ArrayList<QuakeEntry> fillterResult = filter(list, maf);
+        
+        for(QuakeEntry qe : fillterResult){
+            System.out.println(qe);
+        }
+        
+    }
+    
     public void quakesWithFilter(){
         EarthQuakeParser parser = new EarthQuakeParser();
         
