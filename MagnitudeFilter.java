@@ -15,10 +15,12 @@ public class MagnitudeFilter implements Filter {
     
     private double min;
     private double max;
+    private String name;
     
-    public MagnitudeFilter(double minMag, double maxMag){
+    public MagnitudeFilter(double minMag, double maxMag, String filterName){
         this.min = minMag;
         this.max = maxMag;
+        this.name = filterName;
     }
     
     
@@ -31,4 +33,8 @@ public class MagnitudeFilter implements Filter {
         return false;
     }
 
+    @Override
+    public String getName(){
+        return this.name;
+    }
 }

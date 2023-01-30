@@ -14,10 +14,12 @@
 public class PhraseFilter implements Filter {
     private String where;
     private String phrase;
+    private String name;
     
-    public PhraseFilter(String getSearchLocation, String sentenceToSearch){
+    public PhraseFilter(String getSearchLocation, String sentenceToSearch, String filterName){
         this.where = getSearchLocation;
         this.phrase = sentenceToSearch;
+        this.name = filterName;
     }
     
     
@@ -50,5 +52,9 @@ public class PhraseFilter implements Filter {
         
     }
 
+    @Override
+    public String getName(){
+        return this.name;
+    }
 
 }

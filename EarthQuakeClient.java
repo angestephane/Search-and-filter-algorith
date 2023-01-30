@@ -78,9 +78,9 @@ public class EarthQuakeClient {
     public void bigQuakes() {
         EarthQuakeParser parser = new EarthQuakeParser();
         //String source = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
-        //String source = "../../data/nov20quakedata.atom";
-        String sourceSmallData = "../../data/nov20quakedatasmall.atom";
-        ArrayList<QuakeEntry> list = parser.read(sourceSmallData);
+        String source = "../data/nov20quakedata.atom";
+        //String sourceSmallData = "../data/nov20quakedatasmall.atom";
+        ArrayList<QuakeEntry> list = parser.read(source);
         System.out.println("read data for " + list.size() + " quakes");
        
         ArrayList<QuakeEntry> listBig = filterByMagnitude(list, 5.0);
@@ -108,14 +108,14 @@ public class EarthQuakeClient {
         EarthQuakeParser parser = new EarthQuakeParser();
         
         //String dataSource = "../../data/nov20quakedatasmall.atom";
-        String source = "../../data/nov20quakedata.atom";
+        String source = "../data/nov20quakedata.atom";
         
         ArrayList<QuakeEntry> list = parser.read(source);
         
         System.out.println("Quake Read : "+ list.size());
         
-        double minDepth = -10000.0;
-        double maxDepth = -8000.0;
+        double minDepth = -4000.0;
+        double maxDepth = -2000.0;
         
         ArrayList<QuakeEntry> quakes = filterByDepth(list,minDepth ,maxDepth);
         
@@ -131,11 +131,11 @@ public class EarthQuakeClient {
         EarthQuakeParser parser = new EarthQuakeParser();
         
         //String dataSource = "../../data/nov20quakedatasmall.atom";
-        String source = "../../data/nov20quakedata.atom";
+        String source = "../data/nov20quakedata.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
         
         String where = "any";
-        String phrase = "Creek";
+        String phrase = "Can";
         
         ArrayList<QuakeEntry> quakes = filterByPhrase(list, where, phrase);
         

@@ -43,7 +43,7 @@ public class LargestQuakes {
     public void findLargestQuakes(){
         EarthQuakeParser parser = new EarthQuakeParser();
         
-        String source = "../../data/nov20quakedata.atom";
+        String source = "../data/nov20quakedata.atom";
         //String sourceForSmallData = "../../data/nov20quakedatasmall.atom";
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
 
@@ -51,7 +51,7 @@ public class LargestQuakes {
         
         System.out.println(list.size() + " #Données lues");
         
-        ArrayList<QuakeEntry> largestMagnitude = getLargest(list, 5);
+        ArrayList<QuakeEntry> largestMagnitude = getLargest(list, 50);
         
         for(QuakeEntry qe : largestMagnitude ){
            System.out.println(qe); 

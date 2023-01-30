@@ -14,10 +14,12 @@
 public class DistanceFilter implements Filter {
     private Location localisation;
     private double distanceMax;
+    private String name;
     
-    public DistanceFilter(Location loc, double distMax){
+    public DistanceFilter(Location loc, double distMax, String filterName){
         this.localisation = loc;
         this.distanceMax = distMax;
+        this.name = filterName;
     }
     
     
@@ -30,4 +32,8 @@ public class DistanceFilter implements Filter {
         return false;
     }
 
+    @Override
+    public String getName(){
+        return this.name;
+    }
 }

@@ -10,5 +10,6 @@
 public interface Filter {
     
     public boolean satisfie(QuakeEntry qe);
+    public String getName();
 
 }

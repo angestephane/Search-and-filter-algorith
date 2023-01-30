@@ -18,5 +18,10 @@ public class MaxMagFilter implements Filter {
     public boolean satisfie(QuakeEntry qe){
         return qe.getMagnitude() >= this.magMin;
     }
+  
+    @Override
+    public String getName(){
+        return "Filtre sur la plus grande magnitude";
+    }
 
 }
