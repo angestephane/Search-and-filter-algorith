@@ -35,11 +35,16 @@ public class EarthQuakeClient2 {
         
         System.out.println(list.size() + " Data lues");
         
-        Filter filtre1 = new MagnitudeFilter(4.0, 5.0);
-        Filter filtre2 = new DepthFilter(-35000.0, -12000.0);
+        Location japan = new Location(35.42, 139.43);
         
-        ArrayList<QuakeEntry> resultFilter = filter(list, filtre1);
-        ArrayList<QuakeEntry> finalResult = filter(resultFilter, filtre2);
+        Filter filtre1 = new MagnitudeFilter(4.0, 5.0); // Filtre selon la magnitude du séisme
+        Filter filtre2 = new DepthFilter(-35000.0, -12000.0); // Filtre selon la profondeur du séisme
+        Filter filtre3 = new DistanceFilter(japan, 10000*1000); //Filtre selon une position
+        Filter filtre4 = new PhraseFilter("end", "Japan"); //Filtre en prenant en compte le mot clé Japan
+        
+        
+        ArrayList<QuakeEntry> firstFilter = filter(list, filtre3);
+        ArrayList<QuakeEntry> finalResult = filter(firstFilter, filtre4);
         
         for(QuakeEntry qe : finalResult){
             System.out.println(qe);
